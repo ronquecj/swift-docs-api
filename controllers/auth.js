@@ -88,7 +88,7 @@ export const loginUser = async (req, res) => {
 export const loginAdmin = async (req, res) => {
   try {
     const { username, password } = req.body;
-    const user = await User.findOne({ username: username });
+    const user = await Admin.findOne({ username: username });
 
     if (!user)
       return res.status(400).json({ msg: 'User does not exist.' });
