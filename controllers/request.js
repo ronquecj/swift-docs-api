@@ -23,6 +23,22 @@ export const newRequest = async (req, res) => {
   }
 };
 
+export const approveRequest = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const filter = { id: id };
+    const update = { status: 'Approved' };
+
+    const approve = await Request.findOneAndUpdate(filter, update, {
+      new: true,
+    });
+
+    res.status(200).json(approve);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
 // GET REQUEST
 export const getRequest = async (req, res) => {
   try {
