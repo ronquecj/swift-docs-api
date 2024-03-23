@@ -26,7 +26,7 @@ export const newRequest = async (req, res) => {
 export const approveRequest = async (req, res) => {
   try {
     const { id } = req.params;
-    const filter = { id: id };
+    const filter = { _id: id };
     const update = { status: 'Approved' };
 
     const approve = await Request.findOneAndUpdate(filter, update, {
